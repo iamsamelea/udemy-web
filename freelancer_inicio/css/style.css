@@ -1,6 +1,17 @@
-/*Con estas dos propiedades podemos "hackear" la página y así poder trabajar con rem mas facilmente en vez de pixeles (1rem = 10px) con esta formula*/
 /*El rem es una medida adaptativa a las nuevas pantallas*/
-html {
+/*Para dar valor una hoja css se lee de arriba abajo, pero entra en juego la especificidad, como mas especifico el selector ese color mandará aunque otro selector tambien afecte a la misma etiqueta, también pero no es recomendado si se le pone !important después del punto y coma al final del valor de la propiedad, eso mandará sobre todos los demás selectores*/
+
+:root { /*Esto se le llaman custom properties*//*Esto es una variable llamada root que no está enlazada con ninguna etiqueta en el archivo html, pero ahora la estamos utilizando para poder definir unos colores(se pueden utilizar cualquier tipo de valor) en nuestro css y declararlos mediante variables*/
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+}
+
+
+
+html { /*Con estas dos propiedades podemos "hackear" la página y así poder trabajar con rem mas facilmente en vez de pixeles (1rem = 10px) con esta formula*/
     font-size: 62.5%;
 }
 
@@ -10,11 +21,12 @@ body {
 
 
 /*Estilos y diseño*/
-h1 {
+.titulo { /*Este selector que empieza por un punto es porque viene de una clase del archivo html, utilizar clases es recomendable porque es reutilizable*/
+    color: var(--primario);/*Con el valor var definimos que queremos una variable en este caso del root y entre parentesis le damos el nombre que le hemos asignado al color almacenado en el root*/
     text-align: center;
     font-size: 3.8rem;
 }
 
-span {
+.titulo span { /*Con este tipo de selector estamos diciendo que se le aplique este diseño a todos los span dentro de las etiquetas con la clase titulo*/
     font-size: 2rem;
 }
