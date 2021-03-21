@@ -17,6 +17,7 @@ html { /*Con estas dos propiedades podemos "hackear" la página y así poder tra
 
 body {
     font-size: 16px;
+    font-family: 'Krub', sans-serif;/*Esta es la fuente que hemos importado de Google Fonts*/
 }
 
 
@@ -29,4 +30,17 @@ body {
 
 .titulo span { /*Con este tipo de selector estamos diciendo que se le aplique este diseño a todos los span dentro de las etiquetas con la clase titulo*/
     font-size: 2rem;
+}
+
+.contenedor {
+    width: 120rem;
+    margin: 0 auto;/*Con solo utilizar la propiedad margin se pueden poner los valores (top, right, botton y left) en ese orden, siempre van en sentidio de las agujas del reloj, en este caso solo hay 2 valores 0 y auto(el valor 0 o primer valor siempre equivale a arriba y abajo y el valor auto o segundo valor siempre equivale a derecha e izquierda, se ponen 2 calores si coinciden arriba y abajo e izquierda y derecha para simplificar el código*/
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+
+.navegacion-principal {
+    
 }

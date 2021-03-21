@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!--El orden de los enlaces es importante, la hoja css de estilos siempre al final-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diseñador Freelancer</title>
+    <link rel="preload" href="css/normalize.css" as="style"><!--El atributo as indica el propósito que servirá el recurso enlazado una vez recuperado-->
+    <link href="css/normalize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet"><!--Este link es de Google fonts donde podemos escoger que fuentes poner al documento y que estilo de fuentes, en este caso 400(o normal) y 700(o bold) podemos escribirlo de las dos maneras en el archivo css-->
     <link rel="preload" href="css/style.css" as="style"><!--Con esta línea lo que conseguimos es que el archivo css cargue más rápido en la página.(no es obligatorio ponerlo)-->
     <link href="css/style.css" rel="stylesheet" type="text/css"><!--el atributo rel indica que relacion tiene el archivo con este html, en este caso la relacion es de hoja de estilo(stylesheet), el atributo type indica que tipo de documento es, en este caso un css tipo texto(este atributo no es necesario ponerlo, tan solo es informativo)-->
 </head>
@@ -12,12 +17,14 @@
         <h1 class="titulo">Samuel Lara <span>Freelancer</span></h1><!--Utilizo la etiqueta span para poder separar la palabra Freelancer del h1 pero sigue estando integrada en el h1, así le puedo dar un estilo propio al span y otro al h1-->
     </header>
 
-    <nav><!--La etique nav pone los enlaces uno al lado del otro en el navegador, esta etiqueta sirve para hacer barras de navegación-->
-        <a href="#">Inicio</a> <!--Dentro del valor de href se le pone # para simular que quieres ir a un enlace pero no hay ninguno-->
-        <a href="#">Sobre Mi</a>
-        <a href="#">Clientes</a>
-        <a href="#">Contacto</a>
-    </nav>
+    <div class="nav-bg"><!--Este div se crea para poder centrar el contenido del nav pero poder darle estilo de color hasta el final de los laterales de la página sin descentrar el contenido-->
+        <nav class="navegacion-principal contenedor"><!--La etique nav pone los enlaces uno al lado del otro en el navegador, esta etiqueta sirve para hacer barras de navegación-->
+            <a href="#">Inicio</a> <!--Dentro del valor de href se le pone # para simular que quieres ir a un enlace pero no hay ninguno-->
+            <a href="#">Sobre Mi</a>
+            <a href="#">Clientes</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </div>
     
     <section>
         <h2 class="titulo">Diseño y Desarrollo Web Freelancer</h2> <!--En este caso se pone una etiqueta section, porque despues de la etiqueta header se suele poner una etiqueta main pero al no ir seguidamente el contenido principal, entonces se pone una etiqueta section-->
