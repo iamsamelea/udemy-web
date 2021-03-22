@@ -1,0 +1,3 @@
+"Crea un Media Querie": {
+		"prefix" : "mq", /*Este Snippet permite que escribeindo este texto se incie el comando*/
+		"body" : "@media (min-width: $1) {\n    $2\n}"/*Este valor es el que aparecerá y el signo de dolar indica donde se moverá con el tabulador la línea de escribir*/

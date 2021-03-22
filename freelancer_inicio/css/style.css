@@ -23,7 +23,6 @@ body {
 
 /*Estilos y diseño*/
 .titulo { /*Este selector que empieza por un punto es porque viene de una clase del archivo html, utilizar clases es recomendable porque es reutilizable*/
-    color: var(--primario);/*Con el valor var definimos que queremos una variable en este caso del root y entre parentesis le damos el nombre que le hemos asignado al color almacenado en el root*/
     text-align: center;
     font-size: 3.8rem;
 }
@@ -38,9 +37,24 @@ body {
 }
 
 .nav-bg {
-    background-color: var(--secundario);
+    background-color: var(--secundario);/*Con el valor var definimos que queremos una variable en este caso del root y entre parentesis le damos el nombre que le hemos asignado al color almacenado en el root*/
 }
 
 .navegacion-principal {
-    
+    display: flex; /*La propiedad display hay block como el div que se apilan unas bajo otras e inline que se ponen al costado de otra com span(todas las etiquetas vienen con su propiedad), en este caso ponemos display flex para poder trabajar mas libremente y habilitar nuevas opciones de diseño*/
+    justify-content: space-between; /*Con esta propiedad y valor hacemos que el contenido esté justificado y el valor space-between hace que haya una separación entre los enlaces, enviando el primero y el utlimo a los bordes del nav y dando la misma separación entre todos ellos*/
 }
+
+.navegacion-principal a {
+    padding: 1rem;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;/*Poner 700 o bold es lo mismo ya que esta fuente está importada de Google Fonts y hemos copiado una que con 700 era en negrita*/
+}
+
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
