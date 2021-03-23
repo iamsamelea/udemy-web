@@ -1,38 +1,89 @@
 /*El rem es una medida adaptativa a las nuevas pantallas*/
 /*Para dar valor una hoja css se lee de arriba abajo, pero entra en juego la especificidad, como mas especifico el selector ese color mandará aunque otro selector tambien afecte a la misma etiqueta, también pero no es recomendado si se le pone !important después del punto y coma al final del valor de la propiedad, eso mandará sobre todos los demás selectores*/
 
+
+
+/*--------------------------------------------------ESTILOS Y DISEÑO---------------------------*/
+
+/*-------------------------------------------------GLOBALES------------------------------------*/
 :root { /*Esto se le llaman custom properties*//*Esto es una variable llamada root que no está enlazada con ninguna etiqueta en el archivo html, pero ahora la estamos utilizando para poder definir unos colores(se pueden utilizar cualquier tipo de valor) en nuestro css y declararlos mediante variables*/
     --blanco: #ffffff;
     --oscuro: #212121;
     --primario: #FFC107;
     --secundario: #0097A7;
     --gris: #757575;
+    --grisclaro: #DFE9F3;
 }
-
-
 
 html { /*Con estas dos propiedades podemos "hackear" la página y así poder trabajar con rem mas facilmente en vez de pixeles (1rem = 10px) con esta formula*/
     font-size: 62.5%;
+    box-sizing: border-box; /*Esta propiedad hace que se reinicien los tamaños que queremos, por ejemplo si queremos una imagen con 450px le podemos poner padding y no se sumará el padding aparte del tamaño, estrá todo comprimido en mismo tamaño que le hemos puesto a la imagen sin añadir pixeles adicionales por los laterales ni por arriba y abajo*/
+}
+
+*, *:before, *:after { /*El selector (*) significa que se le aplique a todos los elementos que se encuentren en el html*/
+    box-sizing: inherit;
 }
 
 body {
     font-size: 16px;
     font-family: 'Krub', sans-serif;/*Esta es la fuente que hemos importado de Google Fonts*/
+    background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco) 100%); /*la variable linear gradient se utiliza para hacer degradados, el valor to top se indica que vaya de arriba abajo, y seguidamente van los colores con el porcentaje que ocupará cada uno*/
 }
 
-
-/*Estilos y diseño*/
-.titulo { /*Este selector que empieza por un punto es porque viene de una clase del archivo html, utilizar clases es recomendable porque es reutilizable*/
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    text-decoration: none;
+    font-size: 2rem;
+    margin-top: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    width: 90%;
     text-align: center;
-    font-size: 3.8rem;
 }
 
+@media (min-width: 768px) {
+    .boton{
+        width: auto;
+    }
+}
+
+.sombra {
+    box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.67);/*Este código es de sombra y está generado en la web de www.cssmatic.com*/
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+
+/*------------------------------------------------------TIPOGRAFÍA---------------------------------*/
+h1 {
+    font-size: 3.8rem; /*1rem = 10px*/
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,h2,h3 {
+    text-align: center;
+}
+
+
+
+/*------------------------------------------------------TÍTULOS---------------------------------*/
 .titulo span { /*Con este tipo de selector estamos diciendo que se le aplique este diseño a todos los span dentro de las etiquetas con la clase titulo*/
     font-size: 2rem;
 }
 
-.contenedor {
-    width: 120rem;
+
+/*---------------------------------BARRA DE NAVEGACIÓN-----------------------------------------*/
+.contenedor { /*Este selector que empieza por un punto es porque viene de una clase del archivo html, utilizar clases es recomendable porque es reutilizable*/
+    max-width: 120rem; /*En este caso hacemos que tome el maximo de la pantalla 1200px siempre, entonces el scroll para hacerlo responsive fluye más*/
     margin: 0 auto;/*Con solo utilizar la propiedad margin se pueden poner los valores (top, right, botton y left) en ese orden, siempre van en sentidio de las agujas del reloj, en este caso solo hay 2 valores 0 y auto(el valor 0 o primer valor siempre equivale a arriba y abajo y el valor auto o segundo valor siempre equivale a derecha e izquierda, se ponen 2 calores si coinciden arriba y abajo e izquierda y derecha para simplificar el código*/
 }
 
@@ -42,10 +93,18 @@ body {
 
 .navegacion-principal {
     display: flex; /*La propiedad display hay block como el div que se apilan unas bajo otras e inline que se ponen al costado de otra com span(todas las etiquetas vienen con su propiedad), en este caso ponemos display flex para poder trabajar mas libremente y habilitar nuevas opciones de diseño*/
-    justify-content: space-between; /*Con esta propiedad y valor hacemos que el contenido esté justificado y el valor space-between hace que haya una separación entre los enlaces, enviando el primero y el utlimo a los bordes del nav y dando la misma separación entre todos ellos*/
+    flex-direction: column;/*Con esta propiedad se hace que se alineé verticalmente la barra de navegación*/
 }
 
+@media (min-width: 480px) {
+    .navegacion-principal{
+        flex-direction: row;/*con los mediaqueries le decimos que por encima de 768px se nuestre de forma horizontal y por debajo de forma vertical todo lo que está dentro de la navegación principal*/
+        justify-content: space-between; /*Con esta propiedad y valor hacemos que el contenido esté justificado y el valor space-between hace que haya una separación entre los enlaces, enviando el primero y el utlimo a los bordes del nav y dando la misma separación entre todos ellos*/
+    }
+}
 .navegacion-principal a {
+    display: block;
+    text-align: center;
     padding: 1rem;
     color: var(--blanco);
     text-decoration: none;
@@ -57,4 +116,50 @@ body {
     background-color: var(--primario);
     color: var(--oscuro);
 }
+
+
+
+/*------------------------------------------------IMÁGEN y DIRECCIÓN---------------------------*/
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    position: relative;/*El position relative hace que si un selector que esté bajo otro selector con position absolute tome a este con el position relative como el total de la pagina por donde moverse, el otro se moverá con position absolute*/
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute; /*Este selector hace que se pueda adaptar añ total de un selector padre con position relative, y solo poder moverse por dentro de el como si fuera el total de la página*/
+    background-color: rgb(0 0 0/ 70%);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;/*Align-items se utiliza para alinear horizontalmente el contenido de columnas cuando se utiliza flexbox y si se utilza flexdirection column(si fuera flexdirection row(o por defecto) se utilizarian las propiedades al reves, entonces justify-content se utilizaria para alinear horizontal y align-items verticalmente*/
+    justify-content: center;/*Justifica el contenido de manera vertical*/
+    
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;/*El valor flex-end hace que el contenido se coloque abajo del todo del contenido(align-items justifica de forma vertical cuando no hay un flex-direction column)*/
+}
+
+
+/*--------------------------------------------SERVICIOS----------------------------------------*/
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;/*esta variable utiliza los servicios de CSS grid*/
+        grid-template-columns: 1fr 1fr 1fr; /* igual que escrbir 33.33% 33.33% 33.33%*//*la variable grid-template-columns permite que se divida el apartado en columnas(grid-template-rows permite que se divida en filas) el valor 1fr equivale a 1 fraccion del total, entonces 1fr equivale a 33.33% y por eso hay 3 1fr para que cada uno coja una fraccion y entre los 3 sumen el 100%*/
+    }
+}
+
+
 
