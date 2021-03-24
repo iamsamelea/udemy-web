@@ -3,7 +3,7 @@
 
 
 
-/*--------------------------------------------------ESTILOS Y DISEÑO---------------------------*/
+/*-----------------------------------------------------------------------------------------------------------ESTILOS Y DISEÑO-----------------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------GLOBALES------------------------------------*/
 :root { /*Esto se le llaman custom properties*//*Esto es una variable llamada root que no está enlazada con ninguna etiqueta en el archivo html, pero ahora la estamos utilizando para poder definir unos colores(se pueden utilizar cualquier tipo de valor) en nuestro css y declararlos mediante variables*/
@@ -18,7 +18,17 @@
 html { /*Con estas dos propiedades podemos "hackear" la página y así poder trabajar con rem mas facilmente en vez de pixeles (1rem = 10px) con esta formula*/
     font-size: 62.5%;
     box-sizing: border-box; /*Esta propiedad hace que se reinicien los tamaños que queremos, por ejemplo si queremos una imagen con 450px le podemos poner padding y no se sumará el padding aparte del tamaño, estrá todo comprimido en mismo tamaño que le hemos puesto a la imagen sin añadir pixeles adicionales por los laterales ni por arriba y abajo*/
+    scroll-snap-type: y mandatory;/*Esta propiedad sirve para hacer scroll y que se vaya posicionando en las distintas secciones de nuestra web(tipo Apple) la y sirve para decirle que el scroll será de arriba hacia abajo(si ponemos una x será de izquierda a derecha)*/
 }
+
+/**SCROLL SNAP**/
+.navegacion-principal,
+.servicios,
+.formulario {
+    scroll-snap-align: center; /*Agrega el scroll y lo centra en la pantalla para que puedas ver el contenido*/
+    scroll-snap-stop: always; /*Le dice que se pare siempre en la siguiente seccion donde se hace scroll*/
+}
+
 
 *, *:before, *:after { /*El selector (*) significa que se le aplique a todos los elementos que se encuentren en el html*/
     box-sizing: inherit;
@@ -28,6 +38,13 @@ body {
     font-size: 16px;
     font-family: 'Krub', sans-serif;/*Esta es la fuente que hemos importado de Google Fonts*/
     background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco) 100%); /*la variable linear gradient se utiliza para hacer degradados, el valor to top se indica que vaya de arriba abajo, y seguidamente van los colores con el porcentaje que ocupará cada uno*/
+}
+
+.sombra {
+    box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.67);/*Este código es de sombra y está generado en la web de www.cssmatic.com*/
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
 }
 
 .boton {
@@ -42,6 +59,7 @@ body {
     border-radius: 0.5rem;
     width: 90%;
     text-align: center;
+    border: none; /*Se le ha aplicado esta propiedad para darle estilo al boton del formulario de Contacto*/
 }
 
 @media (min-width: 768px) {
@@ -50,12 +68,30 @@ body {
     }
 }
 
-.sombra {
-    box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.67);/*Este código es de sombra y está generado en la web de www.cssmatic.com*/
-    background-color: var(--blanco);
-    padding: 2rem;
-    border-radius: 1rem;
+.boton:hover {
+    cursor: pointer;
 }
+
+
+/*----------------------------------------------UTILIDADES-----------------------------------------*/
+.w-sm-100 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+
 
 
 /*------------------------------------------------------TIPOGRAFÍA---------------------------------*/
@@ -158,8 +194,98 @@ h1,h2,h3 {
     .servicios {
         display: grid;/*esta variable utiliza los servicios de CSS grid*/
         grid-template-columns: 1fr 1fr 1fr; /* igual que escrbir 33.33% 33.33% 33.33%*//*la variable grid-template-columns permite que se divida el apartado en columnas(grid-template-rows permite que se divida en filas) el valor 1fr equivale a 1 fraccion del total, entonces 1fr equivale a 33.33% y por eso hay 3 1fr para que cada uno coja una fraccion y entre los 3 sumen el 100%*/
+        column-gap: 1rem;
     }
 }
 
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;/*Tambien se le puede poner 400 en el valor para darle el estilo (sin bold)*/
+}
+
+.servicio p{
+    line-height: 2; /*Esta propiedad sirve para darle un espaciado entre lineas al párrafo*/
+    text-align: center;
+}
+
+.servicio .iconos {
+    width: 15rem;
+    height: 15rem;
+    background-color: var(--primario);
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+ 
+}
 
 
+/*-------------------------------------FORMULARIO DE CONTACTO------------------------------------*/
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100% );/*Este valor le dice al navegador que escoja la opcion más pequeña, o 60rem(600px) o el 100% de la pantalla, esto sirve para hacer media queries sin utilizar media queries*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {  
+    border: none;/*con esta propiedad y este valor le quitamos el borde que viene por defecto en el fieldset*/
+}
+
+.formulario legend { /*El legend es el titulo del formulario, en vez de utilizar una etiqueta "h" se utiliza la etiqueta legend*/
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) { /*Con el nth-child le dice que de las clases que se llaman campo selecciona la 3 en este caso, empieza desde la 1 hasta la que termina*//*Esto tambien se puede hacer poniendo una clase a la etiqueta en html como hemos hecho todo el rato*/
+        grid-column: 1 / 3; /*Esto va por columnas hay que mirarlo en forefox web developer para entenderlo bien*//*Aqui dice que vaya de la columna 1 a la columna 3*/
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 20rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+
+/*--------------------------------------FOOTER----------------------------------------------------*/
+.footer {
+    text-align: center;
+}
