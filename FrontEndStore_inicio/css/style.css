@@ -19,6 +19,7 @@ html {
     box-sizing: inherit;
 }
 
+
 /**GLOBALES**/
 body {
     background-color: var(--primario);
@@ -63,6 +64,7 @@ h3 {
     font-size: 2.4rem;
 }
 
+
 /**HEADER**/    
 .header {
     display: flex;
@@ -72,6 +74,7 @@ h3 {
 .header__logo {
     margin: 3rem 0;
 }
+
 
 /**NAVEGACIÓN**/
 .navegacion {
@@ -98,6 +101,7 @@ h3 {
     color: var(--secundario)
 }
 
+
 /**FOOTER**/
 .footer {
     background-color: var(--primarioOscuro);
@@ -111,23 +115,70 @@ h3 {
     font-size: 2.2rem;
 }
 
+/**GRID**/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);/*esto hace que se dividan en dos columnas en la página(2 columnar y cada una ocupe 1 fraccion*//*Vista para moviles,etc...*/
+    gap: 2rem;
+}
+ @media (min-width: 768px) {
+     .grid {
+        grid-template-columns: repeat(3, 1fr);/*Esta es la vista de escritorio*/
+     }
+ }
+
+
 /**PRODUCTOS**/
 .producto {
-
+    background-color: var(--primarioOscuro);
+    padding: 1rem;
 }
 
 .producto__imagen {
-
-}
-
-.producto__informacion {
-
+    width: 100%;
 }
 
 .producto__nombre {
-
+    font-size: 4rem;
 }
 
 .producto__precio {
-    
+    font-size: 2.8rem;
+    color: var(--secundario);
 }
+
+.producto__nombre,
+.producto__precio {
+    font-family: var(--fuentePrincipal);
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/**GRAFICOS**/
+.grafico {
+    min-height: 30rem;
+    background-repeat: no-repeat;/*Se utiliza esta propiedad porque se repetian las imagenes de las clases(.gráfico y .grafico--camisas)*/
+    background-size: cover;/*se utiliza esta propiedad para que la imagen ocupe toda el área donde está y no se quede mas pequeña*/
+    grid-column: 1 / 3;
+}
+
+.grafico--camisas {
+    grid-row: 2 / 3;
+    /*grid-column: 1 / 3;*/ /*desabilito esta propiedad de aquí porque la clase padre la tiene ya que las dos clases inferiores la comparten, entonces solo con escribirla en la padre ya funciona*/
+    background-image:  url(../img/grafico1.jpg);
+}
+
+.grafico--node {
+    background-image: url(../img/grafico2.jpg);
+    /*grid-column: 1 / 3;*/
+    grid-row: 8 / 9;
+}
+
+@media (min-width: 768px) {
+    .grafico--node {
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+    }
+}
+
