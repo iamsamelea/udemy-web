@@ -22,7 +22,28 @@
     </nav>
 
     <main class="contenedor">
-        <h1>Producto</h1>
+        <h1>React JS</h1>
+
+        <div class="camisa">
+            <img class="camisa__imagen" src="img/3.jpg" alt="imagen del producto">
+
+            <div class="camisa__contenido">
+                <p>
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin porta pretium felis, ac semper nulla pellentesque sed. Morbi condimentum mauris orci. In blandit et dolor vel consequat. Cras urna odio, euismod sit amet mauris a, varius dignissim neque.
+                </p>
+
+                <form class="formulario">
+                    <select class="formulario__campo"><!--Etiqueta de selector ya que hay que la opcion que damos es la de seleccionar-->
+                        <option disabled selected>-- Seleccionar Talla --</option><!--esta etiqueta la ponemos para que empieze por esta opcion, le ponemos los atributos disabled(para que no puedas seleccionar esta opcion) y despues se le pone el atributo selected para que salga por defecto esta opcion y no sea seleccionable-->
+                        <option class="formulario__campo--color">Pequeña</option><!--etiqueta option para dar opciones de seleccion-->
+                        <option class="formulario__campo--color">Mediana</option>
+                        <option class="formulario__campo--color">Grande</option>
+                    </select>
+                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1"><!--Se utiliza el valor type para darle el tipo que queremos que se pueda escribir en el cuadrado(en este caso solamente se podran mostrar numeros), placeholder indica el texto que se verá en el rectangulo selector y min indica la cantidad minima de numero que se puede poner(sin min se podrian poner numeros negativos, y no se pueden comprar -X camisetas)-->
+                    <input class="formulario__submit" type="submit" value="Agregar al Carrito">
+                </form>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
