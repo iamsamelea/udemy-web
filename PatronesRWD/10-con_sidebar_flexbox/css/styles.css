@@ -49,3 +49,19 @@ p {
 
 
 /** CODIGO AQUI **/
+@media (min-width: 768px) {
+    .con-sidebar {
+        display: flex;
+        gap: 2rem;
+    }
+
+    article {
+        flex: 3; /*este valor es el factor de crecimiento, significa que por cada 3 espacios de la etiqueta asticle la etiqueta aside solo ocupará 1*/
+    }
+
+    aside {
+        flex: 1;
+    }
+
+    
+}

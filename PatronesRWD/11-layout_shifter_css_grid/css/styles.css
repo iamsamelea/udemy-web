@@ -49,3 +49,42 @@ p {
 
 
 /** CODIGO AQUI **/
+@media (min-width: 768px) {
+    .layout-shifter {
+        display: grid;
+        grid-template-areas: "superior"
+                             "inferior"; /*depende de como se escriba si arriba y abajo o en laterales es como se reflejará en la web*/
+    }
+
+    .contenido-principal {
+        grid-area: superior;
+        display: grid; /*en este caso al ser un layout shifter y tener contenido dentro de la clase contenido principal se puede hacer otro display: grid; para darle una posición dentro de ese contenido*/
+        grid-template-areas: "entrada1 entrada2";
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3rem;
+    }
+
+    .sidebar {
+        grid-area: inferior;
+    }
+}
+
+@media (min-width: 992px) {
+    .layout-shifter {
+        /*display: grid;*//*No hace falta poner el display:grid porque lo hereda del de arriba*/
+        grid-template-areas: "contenido sidebar";
+        column-gap: 2rem;
+    }
+
+    .contenido-principal {
+        grid-area: contenido;
+        /*display: grid;*//*No hace falta poner el display:grid porque lo hereda del de arriba*/
+        grid-template-areas: "entrada1"
+                             "entrada2";
+        grid-template-columns: unset;/*este valor le dice al .contenido-principal que se quiten las columnas y se ordenen como le hemos indicado*/
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+}

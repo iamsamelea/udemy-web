@@ -37,3 +37,24 @@ p {
 }
 
 /** CODIGO AQUI **/
+.contenedor {
+    max-width: 120rem;/*esta medida es el total que ocupará el contenedor*/
+    width: 95%;/*es el porcentaje que ocupará el contenedor de los 120 rem del max-widht anterior*/ /*para hacer el contenido fluido hay que poner porcentajes para que el diseño se vaya adaptando cada vez a los tamaños de pantalla automaticamente*/
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .contenedor {
+        width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .contenedor {
+        width: 60%;
+    }
+}
+
+img {
+    max-width: 100%;
+}

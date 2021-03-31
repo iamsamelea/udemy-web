@@ -48,3 +48,15 @@ p {
 }
 
 /** CODIGO AQUI **/
+@media (min-width: 768px) {
+    .con-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        column-gap: 2rem;
+        grid-auto-flow: column; /*esta propiedad hace que el contenido se posicione en el hueco que vea disponible y que no cree una nueva fila debajo de la actual, en este caso estamos deslizando el contenido de la derecha a la izquierda y viceversa*/
+    }
+
+    article {
+        grid-column: 2 / 3;
+    }
+}
