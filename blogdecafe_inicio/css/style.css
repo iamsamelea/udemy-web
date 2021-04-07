@@ -52,12 +52,18 @@ h3 {
     font-size: 3.2rem;
 }
 
-h2{
+h4{
     font-size: 2.8rem;
 }
 
 img {
     max-width: 100%;
+}
+
+@media (min-width: 768px) {
+    img {
+        width: 100%;
+    }
 }
 
 /**UTILIDADES**/ /*estos selectores de clase sirven para dar estilo a lo que queramos solo agregandoles esta clase a la que ya tienen*/
@@ -193,17 +199,21 @@ img {
     margin-bottom: 0;
 }
 
-.widget-curso__label {
+.widget-curso__label,
+.curso__label {
     font-weight: 700;
     font-family: var(--fuenteHeading);
 }
 
-.widget-curso__info {
+.widget-curso__info,
+.curso__info {
     font-weight: 400;
 }
 
 .widget-curso__label,
-.widget-curso__info {
+.widget-curso__info,
+.curso__label,
+.curso__info {
     font-size: 2rem;
 }
 
@@ -217,3 +227,62 @@ img {
 .logo__nombre--footer {
     font-weight: 400;
 }
+
+/**PÁGINA NOSOTROS**/
+@media (min-width: 768px) {
+    .sobre-nosotros {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    } /*Ajustar contenido utilizando Grid*/
+
+    /*.sobre-nosotros{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sobre-nosotros__imagen {
+        flex: 0 0 calc(50% - 1rem)
+    }
+
+    .sobre-nosotros__texto {
+        flex: 0 0 calc(50% - 1rem)
+    }*/ /*Ajustando contenido utilizando Flexbox, para hacer el mismo efecto que con Grid*/
+}
+
+/**PÁGINA CURSOS**/
+    .curso {
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--gris);
+    }
+
+    @media (min-width: 768px) {
+        .curso {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 2rem;
+        }
+    }
+
+    .curso:last-of-type {
+        border-bottom: none;
+    }
+
+    
+    /*.curso__label { /*Estos selectores no deberian estar aquí, ya que son una copia de los parametros que utilizamos para el widget-curso__label, tan solo haría falta ponerlos separados por una "coma" más arriba en el CSS
+        font-weight: 700;
+        font-family: var(--fuenteHeading);
+    }
+    
+    .curso__info {
+        font-weight: 400;
+    }
+    
+    .curso__label,
+    .curso__info {
+        font-size: 2rem;
+    } */
+
+
+
+    
