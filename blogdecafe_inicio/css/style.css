@@ -10,7 +10,7 @@
 
 html {
     box-sizing: border-box;
-    font-size: 62,5%; /*1rem = 10px*/
+    font-size: 62.5%; /*1rem = 10px*/
 }
 
 *, *:before, *:after {
@@ -80,8 +80,15 @@ img {
 }
 
 /**HEADER**/
-.header {
+.webp .header { /*este selector de clase está creado por modernzr.js que lo que hace es que crea una clase con webp si este soporta el formato webp*/
+    background-image: url(../img/banner.webp);
+}
+
+.no-webp .header { /*este selector de clase está creado por modernzr.js que lo que hace es que crea una clase con webp si este no soporta el formato webp, entonces abrirá un jpg*/
     background-image: url(../img/banner.jpg);
+}
+
+.header {
     height: 60rem;
     background-size: cover;
     background-repeat: no-repeat;
@@ -167,12 +174,17 @@ img {
     padding: 1rem 3rem;
     font-size: 1.8rem;
     margin-bottom: 2rem;
+    border: none;
 }
 
 @media (min-width: 768px) {
     .boton {
         display: inline-block; /*inline block se le puede dar propiedades ed margin y widht, pero se comporta como un inline (solo ocupa lo necesario)*/
     }
+}
+
+.boton:hover {
+    cursor: pointer;
 }
 
 .boton--primario {
@@ -283,6 +295,40 @@ img {
         font-size: 2rem;
     } */
 
+/**CONTACTO**/
+.contacto-bg {
+    background-image: url(../img/contacto.jpg);
+    height: 40rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.formulario {
+    background-color: var(--blanco);
+    margin: -5rem auto 0 auto;
+    width: 95%;
+    padding: 5rem; 
+}
+
+.campo {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.campo__label {
+    flex: 0 0 9rem;
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.campo__field {
+    flex: 1;  
+    border: 1px solid var(--gris);
+}
+
+.campo__field--textarea {
+    height: 20rem;
+}
 
 
     

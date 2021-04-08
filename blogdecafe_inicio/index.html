@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="css/normalize.css" type="text/css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--sin esta meta no sería responsive-->
+    <meta name="description" content="página web de blog de café"><!--esta meta es buena para SEO, ya que describe la web muy brevemente-->
+    
     <title>BlogdeCafé</title>
+
+    <!--Prefetch--><!--es una línea de código en la que se escribe la página que creeremos que abriran primero despues del index.html para tenerla ya cargada y mejorar la experiencia de usuario-->
+    <link rel="prefetch" href="cursos.html" as="document">
+    
+    <!-- Preload --><!--es una línea de código que nos permite cargar los archivos mas rápidamente-->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+
+    <link rel="preload" href="chttps://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" crossorigin="crossorigin" as="font"><!--crossorigin para que cargue algo de una url externa-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
@@ -43,7 +53,11 @@
 
             <article class="entrada">
                 <div class="entrada__imagen">
-                    <img src="img/blog1.jpg" alt="imagen blog">
+                    <picture><!--la etiqueta picture seguida de la etiqueta source añaden las imagenes en formato webp ya que pesan menos, en este caso se ha puesto formato webp y jpg porque no hay soporte en todos los navegadores y así si la webp no carga si que carga la del formato jpg-->
+                        <source loading="lazy" srcset="img/blog1.webp" type="image/webp">
+                        <img src="img/blog1.jpg" alt="imagen blog" loading="lazy"><!--el atributo loading="lazy" hace que las imagenes se vayan cargando en la web una vez vayan apareciendo en pantalla y no todas al entrar a la página, ya que causaria mucha carga en el servidor tener que cargar todas de golpe-->
+                    </picture>
+                    
                 </div>
             
             <div class="entrada__contenido">
@@ -55,7 +69,10 @@
 
             <article class="entrada">
                 <div class="entrada__imagen">
-                    <img src="img/blog2.jpg" alt="imagen blog">
+                    <picture><!--la etiqueta picture seguida de la etiqueta source añaden las imagenes en formato webp ya que pesan menos, en este caso se ha puesto formato webp y jpg porque no hay soporte en todos los navegadores y así si la webp no carga si que carga la del formato jpg-->
+                        <source loading="lazy" srcset="img/blog2.webp" type="image/webp">
+                        <img src="img/blog2.jpg" alt="imagen blog" loading="lazy"><!--el atributo loading="lazy" hace que las imagenes se vayan cargando en la web una vez vayan apareciendo en pantalla y no todas al entrar a la página, ya que causaria mucha carga en el servidor tener que cargar todas de golpe-->
+                    </picture>
                 </div>
             
             <div class="entrada__contenido">
@@ -67,7 +84,10 @@
 
             <article class="entrada">
                 <div class="entrada__imagen">
-                    <img src="img/blog3.jpg" alt="imagen blog">
+                    <picture><!--la etiqueta picture seguida de la etiqueta source añaden las imagenes en formato webp ya que pesan menos, en este caso se ha puesto formato webp y jpg porque no hay soporte en todos los navegadores y así si la webp no carga si que carga la del formato jpg-->
+                        <source loading="lazy" srcset="img/blog2.webp" type="image/webp">
+                        <img src="img/blog2.jpg" alt="imagen blog" loading="lazy"><!--el atributo loading="lazy" hace que las imagenes se vayan cargando en la web una vez vayan apareciendo en pantalla y no todas al entrar a la página, ya que causaria mucha carga en el servidor tener que cargar todas de golpe-->
+                    </picture>
                 </div>
             
             <div class="entrada__contenido">
@@ -90,7 +110,7 @@
                     <p class="widget-curso__label">Cupo:
                         <span class="widget-curso__info">20</span>
                     </p>
-                    <a href="entrada.html" class="boton boton--secundario">Más Información</a>
+                    <a href="cursos.html" class="boton boton--secundario">Más Información Sobre Nuestros Cursos</a>
                 </li>
                 
                 <li class="widget-curso">
@@ -102,7 +122,7 @@
                     <p class="widget-curso__label">Cupo:
                         <span class="widget-curso__info">20</span>
                     </p>
-                    <a href="entrada.html" class="boton boton--secundario">Más Información</a>
+                    <a href="cursos.html" class="boton boton--secundario">Más Información Sobre Nuestros Cursos</a>
                 </li>
         </aside>
     </div>
@@ -123,5 +143,6 @@
     </div><!--.contenedor-->
     </footer>
     
+    <script src="js/modernzr.js"></script><!--esta etiqueta enlaza un archivo javascript a esta página, siempre se pone al final del body-->
 </body>
 </html>

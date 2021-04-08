@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="css/normalize.css" type="text/css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--sin esta meta no sería responsive-->
+    <meta name="description" content="página web de blog de café"><!--esta meta es buena para SEO, ya que describe la web muy brevemente-->
+    
     <title>BlogdeCafé</title>
+
+    <!--Prefetch--><!--es una línea de código en la que se escribe la página que creeremos que abriran primero despues del index.html para tenerla ya cargada y mejorar la experiencia de usuario-->
+    <link rel="prefetch" href="cursos.html" as="document">
+    
+    <!-- Preload --><!--es una línea de código que nos permite cargar los archivos mas rápidamente-->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+
+    <link rel="preload" href="chttps://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" crossorigin="crossorigin" as="font"><!--crossorigin para que cargue algo de una url externa-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
@@ -40,7 +50,7 @@
 
         <div class="curso">
             <div class="curso-imagen">
-                <img src="img/curso1.jpg" alt="Imagen Curso">
+                <img src="img/curso1.jpg" alt="Imagen Curso" loading="lazy">
             </div>
 
             <div class="curso__informacion">
@@ -61,7 +71,7 @@
         
         <div class="curso">
             <div class="curso-imagen">
-                <img src="img/curso2.jpg" alt="Imagen Curso">
+                <img src="img/curso2.jpg" alt="Imagen Curso" loading="lazy">
             </div>
 
             <div class="curso__informacion">
@@ -82,7 +92,7 @@
         
         <div class="curso">
             <div class="curso-imagen">
-                <img src="img/curso3.jpg" alt="Imagen Curso">
+                <img src="img/curso3.jpg" alt="Imagen Curso" loading="lazy">
             </div>
 
             <div class="curso__informacion">
@@ -118,5 +128,6 @@
     </div><!--.contenedor-->
     </footer>
     
+    <script src="js/modernzr.js"></script><!--esta etiqueta enlaza un archivo javascript a esta página, siempre se pone al final del body-->
 </body>
 </html>
