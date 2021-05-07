@@ -34,3 +34,27 @@ console.log(Producto3.precioProducto() );
 //Paso 4: el METODO que se utiliza es este, no el de la lección anterior, esta forma de utilizarlo és más nueva, con la palabra reservada return le indicamos el mensaje que queremos imprimir en la pantalla.
 //Paso 5: creas la variable utilizando la palabra reservada new y le asignas el valor de nombre y precio entre el paréntesis.
 //paso 6: se utiliza console.log para imprimir en pantalla el objeto con los valore y si utilizams la sintaxis de punto seguido del prototype nos imprimirá en pantalla el mensaje del return.
+
+
+
+
+
+class Menu {
+    constructor(nombre, precio, picante) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.picante = picante;
+    }
+
+    formatearMenu() {
+        return `${this.nombre}: tiene un coste de ${this.precio} € y ${this.picante}`;
+    }
+}
+
+const plato1 = new Menu('comida', 11, 'és picante');
+const plato2 = new Menu('comida 2', 18, 'no és picante');
+
+console.log(plato1);
+console.log(plato1.formatearMenu() );
+console.log(plato2);
+console.log(plato2.formatearMenu() );
