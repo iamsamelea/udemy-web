@@ -112,4 +112,19 @@ console.log(5);
 
 window.onscroll = function() { //la función on scroll cuenta cada vez que haces scroll
     console.log('Scrolling...')
-}
+};
+
+
+
+
+
+
+//SELECCIONAR ELEMENTOS Y ASOCIARLES UN EVENTO
+const btnEnviar = document.querySelector('.boton--primario'); //se crea la variable y se selecciona el elemento que se quiera agregar el evento, como solo es un elemento utilizamos querySelector
+btnEnviar.addEventListener('click', function(evento) { //se le agrega el evento con addEventListener y la función click, dentro de los parametros de la función se le pone evento para que se pueda ver lo que pasa y no se envie directamente el formulario(ya que es su evento natural por defecto del navegador)
+    console.log(evento); //se le agrega un console log para imprimir evento.
+    evento.preventDefault(); //a evento se le agrega la función preventDefault() para que no se envie el formulario y se pueda consultar y validar antes de enviar.
+
+    //Validar un formulario
+    console.log('enviando formulario...');
+});
