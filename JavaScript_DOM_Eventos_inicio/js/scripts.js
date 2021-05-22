@@ -120,11 +120,166 @@ window.onscroll = function() { //la función on scroll cuenta cada vez que haces
 
 
 //SELECCIONAR ELEMENTOS Y ASOCIARLES UN EVENTO
-const btnEnviar = document.querySelector('.boton--primario'); //se crea la variable y se selecciona el elemento que se quiera agregar el evento, como solo es un elemento utilizamos querySelector
-btnEnviar.addEventListener('click', function(evento) { //se le agrega el evento con addEventListener y la función click, dentro de los parametros de la función se le pone evento para que se pueda ver lo que pasa y no se envie directamente el formulario(ya que es su evento natural por defecto del navegador)
-    console.log(evento); //se le agrega un console log para imprimir evento.
-    evento.preventDefault(); //a evento se le agrega la función preventDefault() para que no se envie el formulario y se pueda consultar y validar antes de enviar.
+// const btnEnviar = document.querySelector('.boton--primario'); //se crea la variable y se selecciona el elemento que se quiera agregar el evento, como solo es un elemento utilizamos querySelector
+// btnEnviar.addEventListener('click', function(evento) { //se le agrega el evento con addEventListener y la función click, dentro de los parametros de la función se le pone evento para que se pueda ver lo que pasa y no se envie directamente el formulario(ya que es su evento natural por defecto del navegador)
+//     console.log(evento); //se le agrega un console log para imprimir evento.
+//     evento.preventDefault(); //a evento se le agrega la función preventDefault() para que no se envie el formulario y se pueda consultar y validar antes de enviar.
 
-    //Validar un formulario
-    console.log('enviando formulario...');
+//     //Validar un formulario
+//     console.log('enviando formulario...');
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//EVENTOS INPUTS Y TEXT AREA
+const datos = { //se crea el objeto con los mismos nombres que en el formulario y el id
+    nombre: '',
+    email: '',
+    mensaje: ''
+}
+
+const nombre = document.querySelector('#nombre'); //se crean las distintas variables
+const email = document.querySelector('#email');
+const mensaje = document.querySelector('#mensaje');
+const formulario = document.querySelector('.formulario'); //Variable del evento de Submit
+
+                                                                                            // nombre.addEventListener('input', function(e) { //esta sintaxis se puede simplificar
+                                                                                            //     console.log(e.target.value);
+                                                                                            // });
+
+                                                                                            // email.addEventListener('input', function(e) {
+                                                                                            //     console.log(e.target.value);
+                                                                                            // });
+
+                                                                                            // mensaje.addEventListener('input', function(e) {
+                                                                                            //     console.log(e.target.value);
+                                                                                            // });
+
+nombre.addEventListener('input', leerTexto); //se les añade el evento, en este caso de tipo input y despues se le agrega la función 
+email.addEventListener('input', leerTexto);
+mensaje.addEventListener('input', leerTexto);
+
+
+
+
+
+
+//El Evento de Submit
+formulario.addEventListener('submit', function(evento) { //El boton tipo submit siempre necesita un elemento con value='submit' en el html, en este caso el formulario tiene un boton tipo submit
+    evento.preventDefault();
+    //Validar el formulario
+    const { nombre, email, mensaje } = datos; //esto es distrocturing
+    if(nombre === '' || email === '' || mensaje === '' ) { //esto significa que no hay nada dentro de los strings por lo tanto estan vacios
+                                                                        // mostrarError('Todos los campos son obligatorios'); //esta es de los errores individuales de abajo del todo
+        mostrarAlerta('Todos los campos son obligatorios', true);
+
+        return; //return corta la ejecución del código y no deja enviar el formulario a no ser que el campo nombre se rellene
+    } 
+    //Crear alerta de enviar correctamente
+                                                                        // mostrarMensaje('Mensaje enviado correctamente');// esta es de los errores individuales de abajo del todo
+        mostrarAlerta('Mensaje enviado correctamente');                                                               
 });
+
+
+
+
+
+
+
+
+
+function leerTexto(e) { //como el codigo se duplicaba se le pone la función aparte y el nombre de la función es el mismo nombre que tienen las variables anteriores
+    // console.log(e.target.value);
+    datos[e.target.value] = e.target.value; //este codigo funciona de la manera que en la consola se irán llenando los parametros del objeto datos con su valor correspondiente(ver en el navegador)
+
+    // console.log(datos); //console.log para poder verlo en el navegador.
+}
+
+
+//REFACTORING DE CÓDIGO(ORDENAR EL CÓDIGO Y HACERLO MÁS REUSABLE Y BONITO)
+
+function mostrarAlerta (mensaje, error = null) {
+    const alerta = document.createElement('P');
+    alerta.textContent = mensaje;
+
+    if(error) {
+        alerta.classList.add('error');
+    } else {
+        alerta.classList.add('correcto');
+    }
+
+    formulario.appendChild(alerta);
+
+    //desaparece despues de 5 segundos
+    setTimeout(() => {
+        alerta.remove();
+    }, 5000);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                            // //Muestra una alerta de que se envió correctamente
+                                                                                            // function mostrarMensaje(mensaje) {
+                                                                                            //     const alerta = document.createElement('P');
+                                                                                            //     alerta.textContent = mensaje;
+                                                                                            //     alerta.classList.add('correcto');
+
+                                                                                            //     formulario.appendChild(alerta);
+
+                                                                                            //     //desaparece despues de 5 segundos
+                                                                                            //     setTimeout(() => {
+                                                                                            //         alerta.remove();
+                                                                                            //     }, 5000);
+                                                                                            // }  
+
+
+
+
+                                                                                            // //Muestra error en pantalla
+                                                                                            // function mostrarError(mensaje) {
+                                                                                            //     const error = document.createElement('P');
+                                                                                            //     error.textContent = mensaje;
+                                                                                            //     error.classList.add('error');
+
+                                                                                            //     formulario.appendChild( error );
+
+                                                                                            //     //El error desaparece después de 5 segundos
+                                                                                            //     setTimeout(() => {
+                                                                                            //         error.remove();
+                                                                                            //     }, 5000);
+    
+
+
+
+     
+     
