@@ -1,0 +1,17 @@
+@mixin telefono { //mixin tiene una sintaxis muy parecida a las funciones, se le pueden poner parametros entre parentesis o no
+    @media (min-width: $telefono) {
+        @content; //content le dice al mixin que quiere contenido aqui dentro pero que lo quiere rellenar desde el header y no tenerlo guardado aqui
+    }
+}
+
+@mixin tablet { 
+    @media (min-width: $tablet) {
+        @content; 
+    }
+}
+
+@mixin desktop { 
+    @media (min-width: $desktop) {
+        @content; 
+    }
+}

@@ -31,15 +31,33 @@
 
                                                     // //Paso 4: este exports.default es con la función series que lo que permite és imprimir todas las funciones a la vez sin tener que poner gulp y el nombre de cada una, con solo utilizar gulp ya se van imprimiento de una en una siempre que despues del igual escribamos la función que utilizemos, tanto {series} como {parallel} y en los parametros ponemos las demás funciones que queramos ejecutar. 
 
-const { series, src, dest } = require('gulp'); //src deja comunicar archivos y dest te deja almacenar un scss compilado
+const { series, src, dest, watch } = require('gulp'); //src deja comunicar archivos y dest te deja almacenar un scss compilado
 const sass = require('gulp-sass'); //no va entre llaves porque solo existe esta función dentro de gulp-sass
 
 
 //FUNCION QUE COMPILA SASS
 function css( ) {
-    return src('src/scss/app-scss') //return devuelve la ubicación, src es la funcion de de arriba de gulp y el Array es la ubicación donde está el archivo a compilar
-        .pipe( sass() ) //.pipe hace que se lean las funciones de arriba hacia abajo
+    return src('src/img/scss/app.scss') //return devuelve la ubicación, src es la funcion de de arriba de gulp y el Array es la ubicación donde está el archivo a compilar
+        .pipe( sass( {
+            outputStyle: 'expanded'
+        }) ) //.pipe hace que se lean las funciones de arriba hacia abajo
         .pipe( dest('./build/css') ) // el ./ significa que es la carpeta actual, carpeta build y el archivo creado es un css
 }
 
+function minificarcss( ) {
+    return src('src/img/scss/app.scss')
+    .pipe( sass( {
+        outputStyle: 'compressed'
+    }) )
+    .pipe( dest('./build/css') )
+}
+
+function watchArchivos() { //esta función compila automaticamente los cambios que le hagamos al archivo app.scss y lo cambia en el archivo app.css
+    watch( 'src/img/scss/**/*.scss', css ); // * = La carpeta actual - ** = Todos los archivos con esa extensión      //con la funcion watch automatizamos el proceso, en el parentesis ponemos la ruta y seguido y separado por una coma (,) le ponemos la función que quremos ejecutar automaticamente cada vez que guardemos, el asterisco le indica que seleccione todos los archivos con la extensión .scss
+}
+
+
+
 exports.css = css;
+exports.minificarcss = minificarcss;
+exports.watchArchivos = watchArchivos; //Esta función hay que ejecutarla cada vez al empezar a trabajar y al acabar tan solo con darle a la basura de la terminal ya se pararia

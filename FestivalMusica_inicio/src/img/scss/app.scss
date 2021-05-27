@@ -1,13 +1,8 @@
-$fuentePrincipal: 'Arial'; //custom properties en SASS (en css era lo que se llamabgulpa root:)
+@import 'base/normalize';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
+@import 'base/variables'; //importando el archivo _variables.scss(el guión bajo le dice a al archivo que se importe a este) entre las comillas no hace falta escribir el guión bajo
+@import 'base/mixins';
+@import 'base/globales';
 
-body {
-    font-family: $fuentePrincipal;
-}
-
-h1 {
-    font-family: $fuentePrincipal;
-}
-
-p {
-    font-family: $fuentePrincipal;
-}
+@import './header';
+@import './video';
