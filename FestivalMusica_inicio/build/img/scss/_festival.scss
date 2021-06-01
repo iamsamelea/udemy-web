@@ -1,0 +1,26 @@
+.info-festival {
+    margin: $separacion auto;
+
+    @include tablet {
+        @include grid(2, $separacion);
+    }
+
+}
+
+.informacion {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+        font-size: 3rem;
+    }
+         
+    .fecha {
+    font-weight: $bold;
+    color: $rosa;
+    }
+
+    .texto {
+        line-height: 1.5;
+    }
+}

@@ -3,6 +3,9 @@
 @import 'base/variables'; //importando el archivo _variables.scss(el guión bajo le dice a al archivo que se importe a este) entre las comillas no hace falta escribir el guión bajo
 @import 'base/mixins';
 @import 'base/globales';
+@import 'base/utilidades';
 
 @import './header';
 @import './video';
+@import './festival';
+@import './lineup';
